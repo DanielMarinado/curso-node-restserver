@@ -37,7 +37,8 @@ const UsuarioSchema = Schema({
 // Método para ocultar la versión y el password
 // Se esta usando en el post cuando se imprime el schema
 UsuarioSchema.methods.toJSON = function() {
-    const { __v, password, ...usuario } =  this.toObject();
+    const { __v, password, _id, ...usuario } =  this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 

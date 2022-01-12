@@ -73,10 +73,13 @@ const usuariosDelete = async (req = request, res = response) => {
 
     const { id } = req.params;
 
+
     // Fisicamente lo borramos
     // const usuario = await Usuario.findByIdAndDelete( id );
 
+    // Este campo se agregó en el middleware con el jwt en validarJWT, ver en rutas
     const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
+    // const usuarioAutenticado = req.usuario;
 
     res.json( usuario );
 }
